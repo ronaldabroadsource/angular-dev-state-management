@@ -1,0 +1,70 @@
+<p>comments works!</p>
+<button (click)="load()">Load Comments</button>
+<div *ngIf="comments$ | async; let comments">
+  <p >{{ comments.length==0? 'click load comments' : comments.length + ' Records'}} </p> 
+  <input type="text" placeholder="search filter" [(ngModel)]="textSearch" [disabled]="!(hasComments$ | async)">
+  <input type="button" (click)="search()" [disabled]="!(hasComments$ | async)" value="Search body for keywords">
+
+  <table>
+    <tr>
+      <th>id</th>
+      <th>post id</th>
+      <th>name</th>
+      <th>email</th>
+      <th>body</th>
+    </tr>
+    <tr *ngFor="let comment of comments">
+      <td>{{comment.id}}</td>
+      <td>{{comment.postId}}</td>
+      <td>{{comment.name}}</td>
+      <td>{{comment.email}}</td>
+      <td>{{comment.body}}</td>
+    </tr>  
+  </table>
+</div>
+
+<br>
+
+<hr>
+<button (click)="loadFirstComment()" [disabled]="!(hasComments$ | async)">Get First record from store</button>
+<p>Use the first record's PostId to get the comments</p>
+<p *ngIf="sampleComments$ | async; let comments" >Sample Comments : {{ comments.length }}</p>
+<table>
+  <tr>
+    <th>id</th>
+    <th>post id</th>
+    <th>name</th>
+    <th>email</th>
+    <th>body</th>
+  </tr>
+  <tr *ngFor="let comment of sampleComments$ | async">
+    <td>{{comment.id}}</td>
+    <td>{{comment.postId}}</td>
+    <td>{{comment.name}}</td>
+    <td>{{comment.email}}</td>
+    <td>{{comment.body}}</td>
+  </tr>  
+</table>
+
+
+<hr>
+<button (click)="updateComment()" [disabled]="!(hasComments$ | async)" >Update body</button>
+<input type="number" [disabled]="!(hasComments$ | async)" placeholder="enter record id to update" [(ngModel)]="commentId">
+<input type="text" [disabled]="!(hasComments$ | async)" placeholder="replace body text here" [(ngModel)]="body">
+<p>after updating, use the Search body for keywords above, to search the body</p>
+<table>
+    <tr>
+      <th>id</th>
+      <th>post id</th>
+      <th>name</th>
+      <th>email</th>
+      <th>body</th>
+    </tr>
+    <tr *ngIf="comment$ | async; let comment">
+      <td>{{comment.id}}</td>
+      <td>{{comment.postId}}</td>
+      <td>{{comment.name}}</td>
+      <td>{{comment.email}}</td>
+      <td>{{comment.body}}</td>
+    </tr>  
+  </table>
