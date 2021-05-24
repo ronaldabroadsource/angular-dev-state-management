@@ -20,12 +20,11 @@ export class MatCommentsTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<CommentsResponse>;
   dataSource: CommentsTableDataSource;
-  comments$ : Observable<CommentsResponse[]>;
+  comments$ : Observable<CommentsResponse[]>=this.store.select(selectPostsComments);
   ids=Array(100).fill(0).map((x,i)=>i+1);
   displayedColumns = ['id','postid','name','email','body'];
 
-  constructor(private store : Store<AppState>) {
-    this.comments$=this.store.select(selectPostsComments);
+  constructor(private store : Store<AppState>) {    
     this.dataSource = new CommentsTableDataSource(this.comments$);
   }
   load(postsId : number){
