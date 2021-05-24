@@ -6,9 +6,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CommentsTableDataSource } from './mat-comments-table-datasource';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store';
-import { selectComments, selectPostsComments } from 'src/app/selectors/comments.selector';
-import { loadPostsComments } from 'src/app/store/actions/comments.actions';
+import { AppState } from '../../../store';
+import { selectComments, selectPostsComments } from '../../../selectors/comments.selector';
+import { loadPostsComments } from '../../../store/actions/comments.actions';
 
 @Component({
   selector: 'mat-comments-table',

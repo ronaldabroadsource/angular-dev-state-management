@@ -3,10 +3,10 @@ import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CommentsResponse } from 'src/app/models/comments.interface';
-import { selectComments, selectSampleComments, hasComments, selectPost } from 'src/app/selectors/comments.selector';
-import { AppState } from 'src/app/store';
-import { loadComments, loadPostSampleComment, updateComment } from 'src/app/store/actions/comments.actions';
+import { CommentsResponse } from '../../../models/comments.interface';
+import { selectComments, selectSampleComments, hasComments, selectPost } from '../../../selectors/comments.selector';
+import { AppState } from '../../../store';
+import { loadComments, loadPostSampleComment, updateComment } from '../../../store/actions/comments.actions';
 
 @Component({
   selector: 'plain-comments-table',
