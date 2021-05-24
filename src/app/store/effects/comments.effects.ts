@@ -28,4 +28,15 @@ export class CommentsEffects{
             map(data =>CommentsActions.loadPostsSampleCommentsSuccess({sampleComments:data}))
         )
     });
+
+    loadPostsComments$ = createEffect(()=>{
+        return this.actions$.pipe(
+            ofType(CommentsActions.loadPostsComments),
+            tap(()=>console.log('dispatch')),
+            concatMap((params)=>this.commentsService.postsComments(params.postsId)),
+            map(data =>CommentsActions.loadPostsCommentsSuccess({comments:data}))
+        )
+    });
+
+   
 }   

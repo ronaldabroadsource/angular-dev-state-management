@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { CommentsResponse } from "../models/comments.interface";
 import { AppState } from '../store';
 import { selectFirstComment } from '../selectors/comments.selector';
-import { concatMap } from 'rxjs/operators';
+import { concatMap, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({providedIn:'root'})
@@ -13,6 +13,10 @@ export class CommentsService{
 
     comments(){
         return this.http.get<CommentsResponse[]>('https://jsonplaceholder.typicode.com/comments');
+    }
+
+    postsComments(postsId:number){
+        return this.http.get<CommentsResponse[]>(`https://jsonplaceholder.typicode.com/posts/${postsId}/comments`);
     }
 
     getComment(){        

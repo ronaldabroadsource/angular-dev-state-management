@@ -1,1 +1,9 @@
-<comments></comments>
+<!-- <comments></comments> -->
+<div>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="bold" [routerLink]="['/mat-table']" routerLinkActive="router-link-active" >MATERIAL TABLE</mat-button-toggle>
+      <mat-button-toggle value="italic" [routerLink]="['/plain-table']" routerLinkActive="router-link-active" >VANILLA TABLE</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  
+<router-outlet></router-outlet>

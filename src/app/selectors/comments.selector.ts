@@ -6,6 +6,8 @@ export const selectCommentsState = createFeatureSelector<CommentState>(commentsF
 
 export const selectComments = createSelector(selectCommentsState,(state)=>selectAll(state.comments));
 
+export const selectPostsComments = createSelector(selectCommentsState,(state)=>selectAll(state.postsComments));
+
 export const selectFirstComment = createSelector(selectComments,(state)=>state[0]);
 
 export const hasComments = createSelector(selectComments,(state)=>state.length>0);

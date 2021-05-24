@@ -11,3 +11,7 @@ export const loadPostSampleComment = createAction("[Comments Page] Load Post's c
 export const loadPostsSampleCommentsSuccess = createAction("[Comments Page] Load Post Comments Success",props<{ sampleComments : CommentsResponse[]}>());
 
 export const updateComment = createAction("[Comments Page] Update Comment",props<{update : Update<CommentsResponse>}>());
+
+export const loadPostsComments = createAction("[Comments Page] Load Posts Comments",props<{postsId:number}>());
+
+export const loadPostsCommentsSuccess = createAction("[Comments Page] Load Posts Comments Success",props<{ comments : CommentsResponse[]}>());
