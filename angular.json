@@ -38,7 +38,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,              
+              "sourceMap": false,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -99,6 +99,7 @@
   },
   "defaultProject": "demo",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": false
   }
 }

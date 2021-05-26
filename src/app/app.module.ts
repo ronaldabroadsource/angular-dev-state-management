@@ -16,7 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCommentsTableComponent } from './pages/comments/mat-comments-table/mat-comments-table.component';
 import { AppMaterialModule } from './app-material.module';
 import { PlainCommentsTableComponent } from './pages/comments/plain-comments-table/plain-comments-table.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 const routes : Routes=[
   {
     path:'mat-table', component : MatCommentsTableComponent
@@ -50,7 +54,12 @@ export class AppRoutingModule { }
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    FlexLayoutModule,    
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
     
   ],
   bootstrap:[ AppComponent ]

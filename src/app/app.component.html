@@ -1,9 +1,136 @@
 <!-- <comments></comments> -->
-<div>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle value="bold" [routerLink]="['/mat-table']" routerLinkActive="router-link-active" >MATERIAL TABLE</mat-button-toggle>
-      <mat-button-toggle value="italic" [routerLink]="['/plain-table']" routerLinkActive="router-link-active" >VANILLA TABLE</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-  
-<router-outlet></router-outlet>
+
+
+<div >
+  <mat-toolbar>
+    <div fxFlex fxLayoutGap.xs="0px"
+                fxLayoutGap.sm="0px"
+                fxLayoutGap.md="0px"
+                fxLayoutGap="10px"
+                fxLayout="row wrap"
+                style="padding: 10px 0px 10px 0px;" class="nav-header-main">
+      <div fxFlex fxLayout.xs="column"
+                  fxLayout.sm="column"
+                  fxLayout.md="column"
+                  fxLayout.lg="column"
+                  fxLayoutAlign="space-around stretch"
+                  fxLayoutGap="5px">
+        <span class="nav-header-brand"
+              fxLayoutAlign.xs="start center" fxFlex.xs
+              fxLayoutAlign.sm="start center" fxFlex.sm
+              fxLayoutAlign.md="start center" fxFlex.md
+              fxLayoutAlign.lg="start center"
+              fxLayoutAlign.xl="start center">
+              BRAND
+              <div fxHide fxShow.md  fxFlex.xs fxFlex.sm fxFlex.md  fxLayoutAlign="center center">
+                Nav Header Content
+              </div>
+
+              <div fxHide fxShow.xs fxShow.sm fxShow.md  fxFlex.xs fxFlex.sm fxLayoutGap="5px" fxLayoutAlign="end center">
+                <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="showFilter=!showFilter" fxHide.xl fxHide.lg>
+                  <mat-icon>menu</mat-icon>
+                </button>
+
+                <button mat-mini-fab aria-label="Example icon button with a home icon" color="primary">
+                  <mat-icon>person</mat-icon>
+                </button>
+              </div>
+        </span>
+
+        <span fxFlex class="nav-header-content"
+          [ngStyle.xs]="{'display': !showFilter?'none':'block'}"
+          [ngStyle.sm]="{'display': !showFilter?'none':'block'}"
+          [ngStyle.md]="{'display': !showFilter?'none':'block'}"
+          [ngClass.sm]="{'test1':false, 'test2':true}">
+          <span fxLayout="row wrap" fxLayoutGap="10px">
+           <span fxLayoutAlign.xs="center" fxFlex.xs="100"
+                 fxLayoutAlign.sm="center" fxFlex.sm="100"
+                 fxLayoutAlign.md="center" fxFlex.md="100"
+                 fxLayoutAlign.lg="start center"
+                 fxHide.md
+
+                 fxLayoutAlign.xl="start center">
+                 Nav Header Content
+           </span>
+
+           <div fxLayout.xs="column" fxLayoutAlign.xs="start" fxFlex.xs="100"
+                fxLayout.sm="column" fxLayoutAlign.sm="start" fxFlex.sm="100"
+                fxLayout.md="column" fxLayoutAlign.md="start" fxFlex.md="100"
+                fxLayout.lg="row wrap" fxLayoutAlign.lg="start center" fxFlex.lg
+                fxLayout.xl="row wrap" fxLayoutAlign.xl="start center" fxFlex.xl
+                fxLayoutGap="5px">
+
+                <span class="filter" *ngFor="let filter of filters" style="position: relative;"
+                      fxLayout.xs="column wrap" fxLayoutAlign.xs="start stretch" fxFlex.xs="100"
+                      fxLayout.sm="column wrap" fxLayoutAlign.sm="start stretch" fxFlex.sm="100"
+                      fxLayout.md="column wrap" fxLayoutAlign.md="start stretch" fxFlex.md="100"
+                      fxLayoutGap.md="5px" >
+                  <input  type="text" placeholder={{filter.id}} >
+                  <button mat-button  mat-icon-button aria-label="Clear" (click)="removeFilter(filter.id)"
+                          [ngStyle.lg]="{'right': '-5px', 'top': '-2px', 'position': 'absolute'}"
+                          [ngStyle.xl]="{'right': '-5px', 'top': '-2px', 'position': 'absolute'}"
+                          style="position: absolute; right: -6px; top: -5px;">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </span>
+
+                <div
+                    fxLayout.xs="column wrap" fxLayoutAlign.xs="start stretch" fxFlex.xs="100"
+                    fxLayout.sm="column wrap" fxLayoutAlign.sm="start stretch" fxFlex.sm="100"
+                    fxLayout.md="column wrap" fxLayoutAlign.md="start stretch" fxFlex.md="100"
+                    fxFlex.lg
+                    fxFlex.xl>
+
+                  <button mat-stroked-button color="primary" (click)="increment()">+ MORE</button>
+                </div>
+
+                <div
+                    fxLayout.xs="column wrap" fxLayoutAlign.xs="start stretch" fxFlex.xs="100"
+                    fxLayout.sm="column wrap" fxLayoutAlign.sm="start stretch" fxFlex.sm="100"
+                    fxLayout.md="column wrap" fxLayoutAlign.md="start stretch" fxFlex.md="100"
+                    fxFlex.lg
+                    fxFlex.xl fxLayoutAlign="end center"
+                    fxLayoutGap="5px">
+                  <input type="text">
+                  <button mat-stroked-button color="primary">+ NOTIFICATION</button>
+                </div>
+
+              <div fxShow fxHide.xs fxHide.sm fxHide.md  fxLayoutGap="5px" fxLayoutAlign="end center">
+                <button mat-mini-fab aria-label="Example icon button with a home icon" color="primary">
+                  <mat-icon>person</mat-icon>
+                </button>
+              </div>
+
+           </div>
+
+          </span>
+        </span>
+
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-drawer-container fxFill class="side-drawer-main" autosize >
+
+    <mat-drawer #drawer class="side-drawer-content" mode="side" [ngStyle]="{'width': !isDrawerOpened ? '100px':''}" >
+      <button mat-raised-button color="primary" [routerLink]="['/mat-table']" routerLinkActive="router-link-active">Material Table</button>
+      <button mat-raised-button color="accent" [routerLink]="['/plain-table']" routerLinkActive="router-link-active" >Plain Table</button>
+      
+    </mat-drawer>
+
+    <div class="side-drawer-wrapper" fxLayout="row" style="padding: 10px 20px 10px 20px;">
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon"
+              (click)="!drawer.opened? toggle(drawer):this.isDrawerOpened=!this.isDrawerOpened">
+        <mat-icon>{{isDrawerOpened? 'arrow_left' : 'arrow_right'}}</mat-icon>
+      </button>
+      <div fxFlex class="side-drawer-body">
+        <div>
+          <h1 style="font-size:100px;"> {{media}}</h1>                   
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-container>
+
+</div>
