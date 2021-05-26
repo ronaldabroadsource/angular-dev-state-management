@@ -1,3 +1,10 @@
-p {
-  font-family: Lato;
+
+input[type="text"]{
+  height: 34px;
+  border-radius: 6px;
+}
+
+::ng-deep .mat-toolbar-row, .mat-toolbar-single-row {
+  min-height: 64px;
+  height:auto;
 }
