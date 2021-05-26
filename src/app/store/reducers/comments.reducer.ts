@@ -6,7 +6,6 @@ import { CommentsActions } from '../../store/action.types';
 export const commentsFeatureKey = 'comments';
 
 export interface CommentStateEntity extends EntityState<CommentsResponse>{};
-export interface PostsCommentStateEntity extends EntityState<CommentsResponse>{};
 
 
 export const commentsAdapter =createEntityAdapter<CommentsResponse>({
@@ -19,7 +18,7 @@ export const { selectIds, selectAll } = commentsAdapter.getSelectors();
 
 export interface CommentState{
     comments : CommentStateEntity;
-    postsComments : PostsCommentStateEntity;
+    postsComments : CommentStateEntity;
     sampleComments : CommentsResponse[]; 
 }
 
